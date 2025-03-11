@@ -1,0 +1,163 @@
+\subsection{Reminders}
+\begin{frame}{Reminding: What is Regression?}
+\begin{itemize}
+    \item \textbf{Regression} is a family of methods used to model and analyze the relationship between:
+    \begin{itemize}
+        \item A \textit{dependent variable} (often denoted \(Y\)), and
+        \item One or more \textit{independent} (or explanatory) variables (often denoted \(X_1, X_2, \ldots, X_n\)).
+    \end{itemize}
+    \item The goal is to \textbf{predict} the value of \(Y\) for given new values of the independent variables or to understand how \(Y\) changes when any one of the \(X_j\) changes.
+    \item Many types of regression models exist (linear, polynomial, logistic, etc.), each making different assumptions about how the variables are related.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Linear Regression: Definition}
+\textbf{Linear Regression} models the \textit{expected value} of \(Y\) as a \textbf{linear} combination of the input variables \(X_1, X_2, \dots, X_n\).
+
+\begin{block}{General Form}
+\[
+Y = \underbrace{w_1 X_1 + w_2 X_2 + \cdots + w_n X_n}_{\text{linear combination}} + b
+\]
+\[
+= \sum_{j=1}^{n} w_j X_j + b,
+\]
+where:
+\begin{itemize}
+    \item \(w_j\) (for \(j = 1, \dots, n\)) are \textbf{weights} (or coefficients).
+    \item \(b\) is the \textbf{intercept} (also called bias in some contexts).
+\end{itemize}
+\end{block}
+\end{frame}
+
+%------------------------------------------------------------
+% Slide: Simple Linear Regression
+%------------------------------------------------------------
+\begin{frame}{Simple Linear Regression (\(n=1\))}
+\begin{itemize}
+    \item When there is only \(\mathbf{1}\) independent variable, \(X = X_1\), the model is called \textbf{simple linear regression}.
+    \item The model then reduces to:
+    \[
+    Y = w\,X + b.
+    \]
+    \item \textbf{Interpretation}:
+    \begin{itemize}
+        \item \(w\) measures the change in \(Y\) associated with a one-unit change in \(X\).
+        \item \(b\) is the value of \(Y\) when \(X=0\).
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------------------
+% Slide: Advantages and Assumptions of Linear Regression
+%------------------------------------------------------------
+\begin{frame}{Advantages \& Assumptions of Linear Regression}
+\textbf{Advantages:}
+\begin{itemize}
+    \item Simple and \textbf{easy to interpret}.
+    \item Works well if the \textbf{linear assumption} is reasonably accurate.
+    \item Efficient to \textbf{train} (closed-form solutions or rapid iterative methods exist).
+\end{itemize}
+
+\vfill
+
+\textbf{Common Assumptions:}
+\begin{itemize}
+    \item \textbf{Linearity:} \(Y\) is linearly related to \(X_1, \dots, X_n\).
+    \item \textbf{Independence:} Observations are independently sampled.
+    \item \textbf{Homoscedasticity:} Constant variance of errors across the range of predictor variables.
+    \item \textbf{Normality of Errors (optional in some contexts):} Residuals (errors) are normally distributed.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Introduction to Classification Metrics}
+    \begin{itemize}
+        \item Metrics used to evaluate the performance of classification models.
+        \item Common metrics: Accuracy, Precision, Recall, F1 Score.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Confusion Matrix}
+    \begin{itemize}
+        \item Table used to describe the performance of a classification model.
+        \item Components: True Positives (TP), True Negatives (TN), False Positives (FP), False Negatives (FN).
+    \end{itemize}
+
+    \begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        & \textbf{Predicted: FALSE} & \textbf{Predicted: TRUE} \\
+        \hline
+        \textbf{Actual: FALSE} & True Negative (TN) & False Positive (FP) \\
+        \hline
+        \textbf{Actual: TRUE} & False Negative (FN) & True Positive (TP) \\
+        \hline
+    \end{tabular}
+    \caption{Confusion Matrix}
+    \label{tab:confusion_matrix}
+\end{table}
+\end{frame}
+
+
+\begin{frame}{Accuracy}
+    \begin{itemize}
+        \item Ratio of correctly predicted instances to the total instances.
+        \item Formula:
+        \[
+        \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+        \]
+        \item Suitable when classes are balanced.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Precision}
+    \begin{itemize}
+        \item Ratio of correctly predicted positive observations to the total predicted positives.
+        \item Formula:
+        \[
+        \text{Precision} = \frac{TP}{TP + FP}
+        \]
+        \item Focuses on the correctness of positive predictions.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Recall (Sensitivity)}
+    \begin{itemize}
+        \item Ratio of correctly predicted positive observations to all observations in the actual class.
+        \item Formula:
+        \[
+        \text{Recall} = \frac{TP}{TP + FN}
+        \]
+        \item Measures the ability to identify all relevant instances.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{F1 Score}
+    \begin{itemize}
+        \item Harmonic mean of Precision and Recall.
+        \item Formula:
+        \[
+        F1 \text{ Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+        \]
+        \item Useful when you need a balance between Precision and Recall.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{ROC-AUC Curve}
+    \begin{itemize}
+        \item Receiver Operating Characteristic - Area Under Curve.
+        \item Plots True Positive Rate (TPR) against False Positive Rate (FPR).
+        \item Measures the ability of the model to distinguish between classes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Precision-Recall Curve}
+    \begin{itemize}
+        \item Plots Precision against Recall.
+        \item Useful when dealing with imbalanced datasets.
+        \item Focuses on the performance of the positive class.
+    \end{itemize}
+\end{frame}

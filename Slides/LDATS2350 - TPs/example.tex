@@ -1,0 +1,125 @@
+\documentclass[pdfpagelabels=false, usepdftitle=false, aspectratio=169,10pt]{beamer}
+\usetheme[navigation, sectiontitles]{UM}
+
+
+% ----------------------
+% title page information
+% ----------------------
+
+\title[Outline]{Exercice sessions}
+\subtitle{LDATS2350}
+
+\author[Me]{
+  Guillaume Deside \inst{1}
+}
+
+\institute[UM]{
+  \inst{1} ISBA, Institut de Statistique, Biostatistique et Sciences Actuarielles \\
+}
+
+\date{\today}
+
+
+% ---------------------
+% begin of presentation
+% ---------------------
+
+\begin{document}
+
+
+\UMtitleframe  % note that we *do not* use \titlepage
+
+
+% ----Frame------------
+
+\begin{frame}{Outline}
+    {\small \tableofcontents}
+\end{frame}
+
+
+% ----Frame------------
+
+%\input{Sections/Pratical_informations}
+
+
+
+
+%\input{Sections/TP1/TP1}
+
+%\input{Sections/TP2/TP2}
+
+\input{Sections/TP3/TP3}
+
+
+
+
+
+%------------------------------------------------------------
+% SLIDE 3: SPLITTING WITH GINI INDEX
+%------------------------------------------------------------
+\begin{frame}{Classification Trees: Splitting Using Gini Index}
+\textbf{Procedure to choose a split}:
+\begin{enumerate}
+  \item \textbf{Consider a potential split} on feature \(X\) into two child nodes: 
+    \[
+      \text{Left node: } \{samples \mid X \le t\}, \quad
+      \text{Right node: } \{samples \mid X > t\}.
+    \]
+  \item \textbf{Compute Gini for each child node}:
+    \[
+      \text{Gini}_L, \quad \text{Gini}_R.
+    \]
+  \item \textbf{Weighted Gini after split}: 
+    \[
+      \text{Gini}_{\text{split}} 
+      = \frac{n_L}{n}\,\text{Gini}_L + \frac{n_R}{n}\,\text{Gini}_R,
+    \]
+    where \(n_L\) and \(n_R\) are sample counts in left and right nodes, \(n = n_L + n_R\).
+  \item \textbf{Gini Gain (or reduction)}:
+    \[
+      \Delta \text{Gini}
+      = \text{Gini}_{\text{parent}} - \text{Gini}_{\text{split}}.
+    \]
+    We pick the feature + threshold that \emph{maximizes} this gain.
+\end{enumerate}
+
+\textbf{Note}: 
+\begin{itemize}
+   \item Similar logic applies for multiple branches or categorical features.
+   \item If \(\Delta \text{Gini}\) is small, the split is not very informative.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+\section{Exercise session 4}
+\subsection{Reminders}
+
+
+
+\section{Exercise session 5}
+\subsection{Reminders}
+
+
+
+
+
+
+
+
+
+
+
+% ----Ref Frame--------
+
+%\begin{frame}{Bibliography}
+%\tiny 
+%\bibliographystyle{apalike}
+%\bibliography{ref.bib}
+%\end{frame}
+
+
+\end{document}
